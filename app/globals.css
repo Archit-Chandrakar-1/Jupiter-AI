@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --purple: #8A2BE2;
+  --yellow: #FFD700;
+  --background: #000000;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--background);
+  color: white;
+  overflow-x: hidden;
+}
+
+.mono {
+  font-family: 'Space Mono', monospace;
+}
+
+.glow {
+  box-shadow: 0 0 20px var(--purple);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px var(--purple);
+  }
+  to {
+    box-shadow: 0 0 30px var(--yellow);
+  }
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  animation: orbit linear infinite;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+.loading-orbit {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--purple);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-orbit::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--yellow);
+  border-radius: 50%;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
